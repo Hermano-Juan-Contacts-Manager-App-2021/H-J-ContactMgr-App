@@ -6,6 +6,9 @@ public class Contact {
     private String lastName;
     private int phoneNumber;
 
+    public static void contactApp() {
+    }
+
     public String getFirstName() {
         return firstName;
     }
