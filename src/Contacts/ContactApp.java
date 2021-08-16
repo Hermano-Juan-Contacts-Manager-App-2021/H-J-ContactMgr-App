@@ -22,8 +22,6 @@ public class ContactApp {
 
         contactList = new ArrayList<>();
 
-//        Contact ozzy = new Contact("Ozzy", "Garcia", 240 - 987 - 9545);
-
     }
 
 
@@ -71,6 +69,18 @@ public class ContactApp {
                 Arrays.asList("contact"), // list with one item
                 StandardOpenOption.APPEND
         );
+        List<String> lines = Files.readAllLines(Paths.get("data", "contacts.txt"));
+        List<String> newList = new ArrayList<>();
+
+        for (String line : lines) {
+            if (line.equals("contact")) {
+                newList.add("contacts");
+                continue;
+            }
+            newList.add(line);
+        }
+
+        Files.write(Paths.get("data", "contacts.txt"), newList);
     }
 
 
