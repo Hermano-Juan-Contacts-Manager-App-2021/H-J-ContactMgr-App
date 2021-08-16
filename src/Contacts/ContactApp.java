@@ -1,10 +1,13 @@
 package Contacts;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,21 +33,25 @@ public class ContactApp {
 //        private static void MenuDisplay() {
         String menu = "Would you like to view contacts?\n" +
                 "1 - View Contacts\n" +
-                "2 - Add a New Contacts.Contact\n" +
-                "3 - Search a Contacts.Contact by Name\n" +
-                "4 - Delete an Existing Contacts.Contact\n" +
+                "2 - Add a New Contact\n" +
+                "3 - Search a Contact by Name\n" +
+                "4 - Delete an Existing Contact\n" +
                 "5 - Adios";
         System.out.println(menu);
         String userInput = sc.nextLine();
         if (userInput.equals("1")) {
             System.out.println("View Contacts. ");
             viewAllContacts();
+            contactApp();
         } else if (userInput.equals("2")) {
             addNewContact();
+            contactApp();
         } else if (userInput.equals("3")) {
             searchContact();
+            contactApp();
         } else if (userInput.equals("4")) {
             deleteContact();
+            contactApp();
         } else if (userInput.equals("5")) {
             System.out.println("Adios");
         }
@@ -58,8 +65,14 @@ public class ContactApp {
     private static void searchContact() {
     }
 
-    private static void addNewContact() {
+    private static void addNewContact() throws IOException {
+        Files.write(
+                Paths.get("data", "contacts.txt"),
+                Arrays.asList("contact"), // list with one item
+                StandardOpenOption.APPEND
+        );
     }
+
 
     private static void viewAllContacts() throws IOException {
         String directory = "data";
