@@ -4,7 +4,7 @@ public class Contact {
 
     private String firstName;
     private String lastName;
-    private int phoneNumber;
+    private String phoneNumber;
 
     public static void contactApp() {
     }
@@ -25,15 +25,15 @@ public class Contact {
         this.lastName = lastName;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public Contact(String firstName, String lastName, int phoneNumber) {
+    public Contact(String firstName, String lastName, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;

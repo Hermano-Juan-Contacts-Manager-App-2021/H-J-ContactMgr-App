@@ -42,7 +42,14 @@ public class ContactApp {
             viewAllContacts();
             contactApp();
         } else if (userInput.equals("2")) {
-            addNewContact();
+            System.out.println("Enter First Name ");
+            String firstName = sc.nextLine();
+            System.out.println("Enter Last Name ");
+            String lastName = sc.nextLine();
+            System.out.println("Enter Phone Number [xxx-xxx-xxxx] ");
+            String phoneNumber = sc.nextLine();
+            Contact newContact = new Contact(firstName, lastName, phoneNumber);
+            addNewContact(newContact);
             contactApp();
         } else if (userInput.equals("3")) {
             searchContact();
@@ -63,24 +70,13 @@ public class ContactApp {
     private static void searchContact() {
     }
 
-    private static void addNewContact() throws IOException {
+    private static void addNewContact(Contact newContact) throws IOException {
+        String contactString = newContact.getFirstName() + " " + newContact.getLastName() + " | " + newContact.getPhoneNumber();
         Files.write(
                 Paths.get("data", "contacts.txt"),
-                Arrays.asList("contact"), // list with one item
+                Arrays.asList(contactString), // list with one item
                 StandardOpenOption.APPEND
         );
-        List<String> lines = Files.readAllLines(Paths.get("data", "contacts.txt"));
-        List<String> newList = new ArrayList<>();
-
-        for (String line : lines) {
-            if (line.equals("contact")) {
-                newList.add("contacts");
-                continue;
-            }
-            newList.add(line);
-        }
-
-        Files.write(Paths.get("data", "contacts.txt"), newList);
     }
 
 
