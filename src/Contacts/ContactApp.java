@@ -55,6 +55,12 @@ public class ContactApp {
             searchContact();
             contactApp();
         } else if (userInput.equals("4")) {
+            System.out.println("Enter First Name ");
+            String firstName = sc.nextLine();
+            System.out.println("Enter Last Name ");
+            String lastName = sc.nextLine();
+            System.out.println("Enter Phone Number [xxx-xxx-xxxx] ");
+            String phoneNumber = sc.nextLine();
             deleteContact();
             contactApp();
         } else if (userInput.equals("5")) {
@@ -64,7 +70,21 @@ public class ContactApp {
     }
 
 
-    private static void deleteContact() {
+    private static void deleteContact(String phoneNumber, String firstName, String lastName) {
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("data", "contacts.txt"));
+            List<String> newList = new ArrayList<>();
+
+            for (String line: lines) {
+                String phoneNumber;
+                if (!line.endsWith(phoneNumber)) {
+                    writesLines.add(line);
+                }
+            }
+            Files.write (dataFile, writeLines);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void searchContact() {
