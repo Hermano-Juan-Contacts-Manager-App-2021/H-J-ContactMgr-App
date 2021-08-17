@@ -61,7 +61,7 @@ public class ContactApp {
             String lastName = sc.nextLine();
             System.out.println("Enter Phone Number [xxx-xxx-xxxx] ");
             String phoneNumber = sc.nextLine();
-            deleteContact();
+            deleteContact(firstName, lastName, phoneNumber);
             contactApp();
         } else if (userInput.equals("5")) {
             System.out.println("Adios");
@@ -70,18 +70,18 @@ public class ContactApp {
     }
 
 
-    private static void deleteContact(String phoneNumber, String firstName, String lastName) {
+    private static void deleteContact(String firstName, String lastName,String phoneNumber) {
         try {
             List<String> lines = Files.readAllLines(Paths.get("data", "contacts.txt"));
             List<String> newList = new ArrayList<>();
 
             for (String line: lines) {
-                String phoneNumber;
-                if (!line.endsWith(phoneNumber)) {
-                    writesLines.add(line);
+                if (line.contains(firstName) && line.contains(lastName) && line.contains(phoneNumber)) {
+                    continue;
                 }
+                newList.add(line);
             }
-            Files.write (dataFile, writeLines);
+            Files.write(Paths.get("data", "contacts.txt"), newList);
         } catch (IOException e) {
             e.printStackTrace();
         }
