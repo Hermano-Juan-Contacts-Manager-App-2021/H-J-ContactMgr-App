@@ -64,6 +64,7 @@ public class ContactApp {
             deleteContact(firstName, lastName, phoneNumber);
             contactApp();
         } else if (userInput.equals("5")) {
+            System.exit(0);
             System.out.println("Adios");
         }
 
@@ -87,7 +88,18 @@ public class ContactApp {
         }
     }
 
-    private static void searchContact() {
+    private static void searchContact() throws IOException {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the name or number\n you would like to search.");
+        List<String> lines = Files.readAllLines(Paths.get("data", "contacts.txt"));
+        String SearchPhrase = sc.nextLine().trim().toLowerCase();
+        for (String contact: lines
+             ) { boolean ans = contact.toLowerCase().contains(SearchPhrase);
+            if (ans) {
+                System.out.println(contact);
+            }
+
+        }
     }
 
     private static void addNewContact(Contact newContact) throws IOException {
