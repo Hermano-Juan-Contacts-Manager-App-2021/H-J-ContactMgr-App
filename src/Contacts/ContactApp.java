@@ -77,7 +77,7 @@ public class ContactApp {
             List<String> newList = new ArrayList<>();
 
             for (String line: lines) {
-                if (line.contains(firstName) && line.contains(lastName) && line.contains(phoneNumber)) {
+                if (line.contains(firstName) && line.contains(lastName)) {
                     continue;
                 }
                 newList.add(line);
@@ -94,7 +94,7 @@ public class ContactApp {
         List<String> lines = Files.readAllLines(Paths.get("data", "contacts.txt"));
         String SearchPhrase = sc.nextLine().trim().toLowerCase();
         for (String contact: lines
-             ) { boolean ans = contact.toLowerCase().contains(SearchPhrase);
+        ) { boolean ans = contact.toLowerCase().contains(SearchPhrase);
             if (ans) {
                 System.out.println(contact);
             }
