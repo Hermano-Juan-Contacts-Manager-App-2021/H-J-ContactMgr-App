@@ -29,7 +29,7 @@ public class ContactApp {
         Scanner sc = new Scanner(System.in);
 
 //        private static void MenuDisplay() {
-        String menu = "Would you like to view contacts?\n" +
+        String menu = "What would you like to do?\n" +
                 "1 - View Contacts\n" +
                 "2 - Add a New Contact\n" +
                 "3 - Search a Contact by Name\n" +
